@@ -1,0 +1,17 @@
+USE BMS;
+DROP TABLE batterydata;
+
+CREATE TABLE batterytype
+(userID CHAR(8) NOT NULL PRIMARY KEY,
+name  VARCHAR(20) NOT NULL,
+chemical VARCHAR(10),
+shpae VARCHAR(10),
+Capacity VARCHAR(10),
+date DATE
+);
+
+
+select * from batterytype ;
+
+INSERT INTO batterytype VALUES('CALACE','CALACE','LNMC','18650','2000mAh','2021-03-29');
+INSERT INTO batterytype VALUES('PANA','PANASONIC','NCA','18650','2900mAh','2021-03-29');
