@@ -1,0 +1,4 @@
+--SELECT customerName FROM Customers; -- customer table에서customerName만 가져옴
+
+--SELECT customerName, Address FROM Customers -- customer table에서customerName, Address 가져옴
+SELECT customerName, Address FROM Customers LIMIT 10 --10개 항목만 가져옴
