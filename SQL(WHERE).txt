@@ -1,0 +1,12 @@
+
+-- 비교 연산자, 특정 컬럼이 특정 값을 가지는 데이터만 불러오기 위해서 사용
+--SELECT * FROM Customers WHERE country ="Germany"; -- WHERE 사용
+-- SELECT * FROM CUSTOMERS WHERE customerID <50; -- WHERE 절 사용
+
+-- 문자 비교
+
+--SELECT * FROM customers WHERE customerName <"B";  -- B이전 이름 
+
+--조건 두개 결합
+-- SELECT * FROM CUSTOMERS WHERE CustomerName < "B" AND country ="Germany"; 
+-- SELECT * FROM CUSTOMERS WHERE CustomerName < "B" or country ="Germany";  -- 둘중 하나
