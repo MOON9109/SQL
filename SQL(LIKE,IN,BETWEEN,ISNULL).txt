@@ -1,0 +1,15 @@
+--SELECT * FROM Customers WHERE country LIKE 'Br%' -- 퍼센트 기호는 뒤에 어떠한 것이 들어가도 상관 없다
+
+--SELECT * FROM Customers WHERE country LIKE '%r%' --r이 들어간 국가들 
+
+--SELECT * FROM Customers WHERE country ='Germany' OR country ='France' --or도 사용 가능하지만 길어질 수 있다.
+
+--SELECT * FROM Customers WHERE country IN ('Germany' ,'France') -- Germany, France 동시 출력(여러개 할때 괄호 안에 집어넣어 준다
+
+--BETWEEN 
+--SELECT * FROM Customers WHERE customerID BETWEEN 3 AND 5 -- ID 해당 구간 출력해줌
+--AND(BETWEEN을 쓰는게 더 효율적일 수 있다)
+
+--SELECT * FROM Customers WHERE customerID >= 3 AND customerID <=5
+
+--SELECT * FROM Customers WHERE CustomerID IS NULL --NULL 검색할 때에는 = 사용하지 않고 IS NULL 사용
