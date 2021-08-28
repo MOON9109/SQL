@@ -1,0 +1,8 @@
+--SELECT * FROM Customers  ORDER BY customerid DESC  -- 내림 차순 정렬 조건 절과 같이 실행 가능(보여줄때만 순서를  바꿔줌)
+                          -- ASC는 기본 값
+                          
+--SELECT * FROM Products ORDER BY price DESC -- price 기준으로 내림 차순
+--SELECT * FROM Products WHERE price >= 20 ORDER BY price DESC -- 20 이상인것 price 기준으로 내림 차순
+
+
+--SELECT * FROM Products ORDER BY price DESC LIMIT 3  -- 가장 비싼것 상위 3개
