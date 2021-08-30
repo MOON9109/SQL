@@ -1,0 +1,14 @@
+--SELECT COUNT(*) FROM Products  -- 행의 레코드 개수
+--SELECT COUNT(Price) From Products -- NULL값이 없기 때문에 동일하게 나온다. 
+
+--SELECT DISTINCT SupplierID FROM Products -- 중복 된거 제거
+--SELECT COUNT( DISTINCT SupplierID) FROM Products --중복된거 제거후 count
+
+--SELECT SUM(Price) FROM Products --총합계
+--SELECT AVG(Price) FROM Products --평균값(NULL값 포함 안된것)
+--SELECT SUM(Price)/COUNT(*) FROM Products -- NULL값 0취급
+
+--SELECT MIN(Price) FROM Products --최소값
+--SELECT MAX(Price) FROM Products --최대값
+
+--SELECT COUNT(Price), SUM(Price), AVG(Price), MIN(Price), MAX(Price) FROM Products
