@@ -1,0 +1,27 @@
+-- SELECT SUM(price) FROM Products 테이블 전체 price 더함
+
+--SELECT SupplierID, AVG(Price) FROM Products GROUP BY SupplierID -- 공급자 별로 평균
+/*
+SELECT SupplierID
+      , CategoryID
+      , AVG(Price) 
+FROM Products 
+GROUP BY SupplierID, CategoryID -- 숫자도 가능함
+ORDER BY AVG(Price) DESC-- 가격에 대해 정렬
+*/
+
+/*
+SELECT SupplierID
+      , CategoryID
+      , AVG(Price) 
+FROM Products 
+GROUP BY SupplierID, CategoryID -- 숫자도 가능함
+HAVING AVG(Price)>=100 --Group by 결과에 대해 100불이상인것만
+
+*/
+SELECT SupplierID
+      , CategoryID
+      , AVG(Price)  AS avg_price -- 다음과 표기 하겠다
+FROM Products 
+GROUP BY SupplierID, CategoryID -- 숫자도 가능함
+HAVING avg_price>=100 --Group by 결과에 대해 100불이상인것만
