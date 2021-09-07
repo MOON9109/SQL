@@ -1,0 +1,8 @@
+SELECT AVG(population) from  CITY WHERE DISTRICT = 'California' ;  -- California의 평균
+SELECT SUM(population) FROM city WHERE district = 'California'; -- California의 합계
+SELECT count(*) FROM city WHERE Population>100000;-- 인구수 넘는 도시개수 
+SELECT count(id) FROM city WHERE Population>100000;-- 인구수 넘는 도시개수 
+
+SELECT FLOOR(AVG(population)) FROM city  -- 소수점 버림 (Floor)
+SELECT MAX(population)- MIN(population) FROM city -- 최대값, 최소값 차이 값 출력 
+SELECT COUNT(city)- COUNT(DISTINCT(city)) FROM station -- 중복값 개수 출력
