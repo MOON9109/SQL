@@ -1,0 +1,10 @@
+
+-- earning 별로 숫자 셈
+SELECT salary * months as earnings
+,COUNT(*)
+FROM employee
+GROUP BY earnings 
+
+-- 최대값을 위해 내림차순
+ORDER BY  earnings DESC
+LIMIT 1
