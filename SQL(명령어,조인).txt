@@ -1,0 +1,43 @@
+-- 중복 count 2이상인 것 출력
+SELECT email FROM person GROUP BY email Having count(id)>=2;
+
+--left join
+SELECT firstName, lastName, city,state FROM Person LEFT JOIN Address ON Person.personId= Address.personId
+
+--where
+
+SELECT SUM(POPULATION) FROM CITY WHERE COUNTRYCODE ="JPN"
+
+--round
+SELECT ROUND(SUM(LAT_N),2) AS lat, ROUND(SUM(LONG_W),2) AS lon FROM STATION; 
+
+
+--연산
+SELECT ROUND(ABS(MAX(LAT_N)-MIN(LAT_N))+ ABS(MAX(LONG_W)-MIN(LONG_W)),4) FROM STATION; 
+
+-- 현재 스키마
+show schemas;
+
+-- 스키마 만들기
+create schema `test-schema`;
+
+--현재 스키마 바꾸기
+
+use sys;
+
+ create table `table1`(`id` INT not null, `name` varchar(255),PRIMARY KEY(`id`));
+show tables;
+
+ describe `table1`;
+
+
+SELECT C.company_code
+    ,C.founder
+    ,COUNT(DISTINCT(E.lead_manager_code))
+    ,COUNT(DISTINCT(E.senior_manager_code))   
+    ,COUNT(DISTINCT(E.manager_code))  
+    ,COUNT(DISTINCT(E.employee_code))  
+FROM COMPANY C
+    INNER JOIN Employee E ON C.company_code =E.company_code
+GROUP BY C.company_code,C.founder
+ORDER BY C.company_code
