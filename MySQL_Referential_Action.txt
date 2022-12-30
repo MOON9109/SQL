@@ -1,0 +1,106 @@
+MySQL Referential Action 에 따른 적용
+
+
+1)NO OPTION
+
+create table `review_no_option` (
+
+`id` int NOT NULL,
+`content`VARCHAR(2048) default null,
+`user_id` int default null,
+`product_id` int unsigned not null,
+ primary key(`id`),
+ FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
+
+
+);
+
+INSERT INTO `review_no_option` (id, content, user_id, product_id) VALUES(1, 'content1','1','1');
+
+delete from product where id ='1'; 
+참조하고 있는 테이블이 있을 때 해당 값을 지우려고 할때 다음과 같은 에러 발생
+Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`de-rdbms-sql`.`review_no_option`, CONSTRAINT `review_no_option_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))	
+
+
+2)ON DELETE RESTRICT (NO OPTION과 동일)
+
+create table `review_on_delete_restrict` (
+
+`id` int NOT NULL,
+`content`VARCHAR(2048) default null,
+`user_id` int default null,
+`product_id` int unsigned not null,
+ primary key(`id`),
+ FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) on delete restrict
+
+
+);
+
+INSERT INTO `review_on_delete_restrict` (id, content, user_id, product_id) VALUES(2, 'content1','2','2');
+
+delete from product where id ='2'; 
+
+Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`de-rdbms-sql`.`review_on_delete_restrict`, CONSTRAINT `review_on_delete_restrict_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))	
+
+Forien key 말고 다른 것 바꾸는 것은 가능
+
+3)on delete set null 
+
+create table `review_on_delete_set_null` (
+
+`id` int NOT NULL,
+`content`VARCHAR(2048) default null,
+`user_id` int default null,
+`product_id` int unsigned, -- not null로 안됨, set null일 때
+ primary key(`id`),
+ FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) on delete set null
+
+
+);
+
+INSERT INTO `review_on_delete_set_null` (id, content, user_id, product_id) VALUES(3, 'content3','3','3');
+
+delete from product where id ='3'; 
+
+ 3번이었던 ID가 null 로 바뀜
+
+
+4) on delete cascade
+
+create table `review_on_delete_cascade` (
+
+`id` int NOT NULL,
+`content`VARCHAR(2048) default null,
+`user_id` int default null,
+`product_id` int unsigned not null, 
+ primary key(`id`),
+ FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) on delete cascade
+
+
+);
+
+INSERT INTO `review_on_delete_cascade` (id, content, user_id, product_id) VALUES(4, 'content4','4','4');
+delete from product where id ='4';
+
+
+해당 열 전부다 없어짐
+
+
+create table `review_on_update_cascade` (
+
+`id` int NOT NULL,
+`content`VARCHAR(2048) default null,
+`user_id` int default null,
+`product_id` int unsigned not null, 
+ primary key(`id`),
+ FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) on update cascade
+
+
+);
+
+INSERT INTO `review_on_update_cascade` (id, content, user_id, product_id) VALUES(5, 'content5','5','5');
+
+
+update product set id ='15' where id='5';
+
+업데이트 시 자식 테이블도 다 바뀜
