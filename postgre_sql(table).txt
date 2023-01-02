@@ -1,0 +1,53 @@
+create table T1 (ID SERIAL not null primary key, BCOLOR VARCHAR, FCOLOR VARCHAR); 
+
+insert 
+	into T1 (BCOLOR, fcolor)
+	
+	values
+			 ('red','red')
+			,('red','red')
+			,('red',NULL)
+			,(NULL,'red')
+			,('red','green')
+			,('red','blue')
+			,('green','red')
+			,('green','blue')
+			,('green','green')
+			,('blue','red')
+			,('blue','green')
+			,('blue','blue')
+			
+; 
+			
+--중복제거
+
+select 
+	distinct BCOLOR, FCOLOR
+from
+	T1
+order by
+		BCOLOR, FCOLOR; 
+
+
+-- 시작 위치는 3 즉 4번째 행부터 시작
+
+select 
+	FILM_ID
+	,TITLE
+	,RELEASE_YEAR
+	from
+		film 
+	order by film_id 
+		limit 4
+		offset 3;
+--IN
+
+select 
+	CUSTOMER_ID
+	,RENTAL_ID
+	,RETURN_DATE
+from rental 
+where 
+
+	CUSTOMER_ID in (1,2)
+order by return_DATE desc; 
