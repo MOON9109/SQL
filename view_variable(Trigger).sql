@@ -1,0 +1,32 @@
+CREATE OR REPLACE FUNCTION fn_trigger_variable_display()
+RETURNS TRIGGER
+LAGUAGE PLPGSEL
+AS
+$$
+		BEGIN
+
+			RAISE NOTICE 'TG_NAME: %' , TG_NAME;
+			RAISE NOTICE 'TG_RELNAME: %' , TG_RELNAME;
+			RAISE NOTICE 'TG_TABLE_SCHEMA: %' , TG_TABLE_SCHEMA;
+			RAISE NOTICE 'TG_TABLE_NAME: %' , TG_TABLE_NAME;
+			RAISE NOTICE 'TG_WHEN: %' , TG_WHEN;
+			RAISE NOTICE 'TG_LEVEL: %' , TG_LEVEL;
+			RAISE NOTICE 'TG_OP: %' , TG_OP;
+			RAISE NOTICE 'TG_NARGS: %' , TG_NARGS;
+
+			RETURN NEW;
+
+
+		END;
+$$
+
+
+CREATE TRIGGER trg_trigger_variable_display
+	AFTER INSERT
+	ON t_temperature_log
+	FOR EACH ROW
+	EXECUTE PROCEDURE fn_trigger_variable_display();
+
+
+
+
